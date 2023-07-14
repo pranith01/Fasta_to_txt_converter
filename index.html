@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FASTA to TXT Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 40px;
+            background-color: #f3f3f3;
+            background-image: url('background-image.jpg');
+            background-size: cover;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        .custom-file-input {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">FASTA to TXT Converter</h1>
+        <p class="text-center">This tool extracts sequences from a FASTA file and converts them to individual text files in a tabular form.</p>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="fileInput">Choose a FASTA file:</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="fileInput" name="file" accept=".fasta" required>
+                    <label class="custom-file-label" for="fileInput">Select file</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Convert</button>
+        </form>
+
+        {% if output_files %}
+            <h2 class="text-center mt-4">Download TXT Files:</h2>
+            <ul class="list-group">
+                {% for file in output_files %}
+                    <li class="list-group-item text-center"><a href="{{ file }}" download>{{ file.split("/")[-1] }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

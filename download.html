@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download TXT Files</title>
+</head>
+<body>
+    <h1>Download TXT Files</h1>
+    <ul>
+        {% for txt_file in txt_files %}
+            <li><a href="{{ txt_file }}" download>{{ txt_file }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
